@@ -7,7 +7,6 @@
     <title>Profile</title>
 
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="icon" href="images/skateboard-icon.ico" />
 
     <!-- Font Awesome icons (free version)-->
@@ -24,9 +23,7 @@
 
     <!-- CSS -->
     <link href="css/order.css" rel="stylesheet" />
-    <link href="public/css/order.css" rel="stylesheet" />
     <link href="css/cart.css" rel="stylesheet" />
-    <link href="public/css/cart.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -48,18 +45,9 @@
                         <div class="col-auto"> <img class="irc_mi img-fluid bell" src="https://i.imgur.com/uSHMClk.jpg"
                                 width="30" height="30"> </div>
                     </div>
-                    <!-- <div class="row mx-auto justify-content-center text-center">
-                                <div class="col-12 mt-3 ">
-                                    <nav aria-label="breadcrumb" class="second ">
-                                        <ol class="breadcrumb indigo lighten-6 first ">
-                                            <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " href="#"><span class="mr-md-3 mr-1">BACK TO SHOP</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
-                                            <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span class="mr-md-3 mr-1">SHOPPING BAG</span></a><i class="fa fa-angle-double-right text-uppercase " aria-hidden="true"></i></li>
-                                            <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase active-2" href="#"><span class="mr-md-3 mr-1">CHECKOUT</span></a></li>
-                                        </ol>
-                                    </nav>
-                                </div>
-                            </div> -->
+
                     <% if ( orderFound.length === undefined) { %>
+
                     <div class="row justify-content-around">
                         <div class="col-md-5 mb-4 mr-2 ml-2">
                             <div class="mb-4">
@@ -96,9 +84,7 @@
                         <div class="col-md-5 mb-5 mr-2 ml-2">
                             <div class="card border-1">
                                 <div class="card-header">
-                                    <p class="card-text text-muted mt-md-4 mb-2 space">YOUR ORDER
-                                        <!-- <span class=" small text-muted ml-2 cursor-pointer">EDIT SHOPPING BAG</span>  -->
-                                    </p>
+                                    <p class="card-text text-muted mt-md-4 mb-2 space">YOUR ORDER</p>
                                 </div>
 
                                 <div class="card-body pt-2">
@@ -137,27 +123,6 @@
                                                         <p> <%= product.email %> </p>
                                                     </div>
                                                 </div>
-
-                                                <!-- <div class="row mt-4">
-                                                <div class="col">
-                                                    <p class="text-muted mb-2">PAYMENT DETAILS</p>
-                                                    <hr class="mt-0">
-                                                </div>
-                                            </div>
-                                            <div class="form-group"> <label for="NAME" class="small text-muted mb-1">NAME ON CARD</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="BBBootstrap Team"> </div>
-                                            <div class="form-group"> <label for="NAME" class="small text-muted mb-1">CARD NUMBER</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555"> </div>
-                                            <div class="row no-gutters">
-                                                <div class="col-sm-6 pr-sm-2">
-                                                    <div class="form-group"> <label for="NAME" class="small text-muted mb-1">VALID THROUGH</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="06/21"> </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group"> <label for="NAME" class="small text-muted mb-1">CVC CODE</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="183"> </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-md-5">
-                                                <div class="col"> <button type="button" name="" id="" class="btn btn-lg btn-block ">PURCHASE $37 SEK</button> </div>
-                                            </div> -->
-
                                             </div>
                                         </div>
                                     </div>
@@ -237,7 +202,6 @@
                                                 <% }) %>
 
                                                 </b></p>
-                                                <!-- <a href="/" class="btn btn-lg btn-primary btn-block mt-2 mb-1">Continue Shopping</a> -->
                                                 <a href="/" class="btn btn-lg btn-primary btn-block  mt-2 mb-1"
                                                     id="continue">Continue Shopping</a>
                                             </div>
@@ -268,26 +232,25 @@
 
                         <a class="fb-ic">
                             <a href="https://www.facebook.com/" style="color:black"><i
-                                    class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i></a>
+                                    class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+                            </a>
                         </a>
-
                         <a class="tw-ic">
                             <a href="https://www.twitter.com/" style="color:black">
                                 <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x">
                                 </i>
                             </a>
-
-                            <a class="li-ic">
-                                <a href="https://www.linkedin.com/" style="color:black">
-                                    <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x">
-                                    </i>
-                                </a>
-
-                                <a class="ins-ic">
-                                    <a href="https://www.instagram.com/" style="color:black">
-                                        <i class="fab fa-instagram fa-lg white-text fa-2x">
-                                        </i>
-                                    </a>
+                        </a>
+                        <a class="li-ic">
+                            <a href="https://www.linkedin.com/" style="color:black">
+                                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+                            </a>
+                        </a>
+                        <a class="ins-ic">
+                            <a href="https://www.instagram.com/" style="color:black">
+                                <i class="fab fa-instagram fa-lg white-text fa-2x"></i>
+                            </a>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -300,5 +263,4 @@
     </footer>
 
 </body>
-
 </html>
