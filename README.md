@@ -7,7 +7,7 @@ User can log in or create an account, add products to the shopping cart, make an
 2. Open the command line and go to the app's folder location.
 3. Type the following - "npm install" to install all dependencies that are require for using this web app.
 4. Type "node app.js" to start the server.
-5. Open your internet browser and enter the following link - "http://localhost:5000/.
+5. Open your internet browser and enter the following link - "http://localhost:3000/.
 6. Enjoy Skateboard Hut!
 
 # Screenshots
