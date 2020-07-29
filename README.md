@@ -1,5 +1,6 @@
 # Skateboard-Hub
-A heavy full-stack responsive online store, involving EJS, Node.js, Express, MongoDB and Mongoose.
+Skateboard Hub is a full stack responsive online store, involving EJS, Node.js, express, MongoDB and Mongoose.
+User can log in or sign in, add products to the shopping cart, make an order and more.
 
 # How To Start
 1. Download the zip file
@@ -7,6 +8,10 @@ A heavy full-stack responsive online store, involving EJS, Node.js, Express, Mon
 3. Insert "npm install" 
 4. Insert "node app.js"
 5. Enjoy the web app!
+
+# Screenshots
+
+
 
 # Demo Example
 www.
