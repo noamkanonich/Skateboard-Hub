@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shopping Cart</title>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="icon" href="../images/skateboard-icon.ico" />
+
+    <!-- Font Awesome icons (free version)-->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+        rel="stylesheet" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/cart.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-uppercase text-white font-weight-bold text-center mb-3">Shopping Cart</h1>
+
+        <div class="row mb-5">
+            <aside class="col-lg-9 col-md-12">
+                <div class="card mb-3">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                                <tr class="small text-uppercase">
+                                    <th scope="col">Product</th>
+                                    <th scope="col" width="120">Quantity</th>
+                                    <th scope="col" width="120">Price</th>
+                                    <th scope="col" class="text-right d-none d-md-block" width="200"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                               
+
+                                <% if(productList.length === 0) { %>
+                                
+                                <tr>
+                                    <td>
+                                        <h1 class="text-uppercase font-weight-bold text-center mb-3 mt-3 ml-3">Shopping cart is empty!</h1>
+                                    </td>
+                                </tr>
+                                <% } else { %>
+
+                                 <!-- ADDING A PRODUCTS TO CART -->
+                                <% productList.forEach(function(product){ %>
+                                <tr>
+                                    <td>
+                                        <figure class="itemside align-items-center">
+                                            <div class="aside"><img src="<%= product.image %>" class="img-sm"></div>
+                                            <figcaption class="info"> <a class="title text-dark" data-abc="true">
+                                                    <%= product.name %> </a>
+                                                <p class="small text-muted"> Brand: Skateboard Hub </p>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <td> <select class="form-control">
+                                            <option>1</option>
+                                            <!-- <option>2</option>                                       -->
+                                        </select> </td>
+                                    <td>
+                                        <div class="price-wrap"> <var class="price"> $<%= product.price %> </var>
+                                        </div>
+                                    </td>
+
+                                    <!-- <form action="/delete" method="post" id="delete-form"> -->
+                                    <form action="/delete" method="post" id="<%= product.name %>">
+                                        <input type="hidden" name="product" value="<%= product.name %>">
+                                        <td class="text-right d-none d-md-block"> <a
+                                                data-original-title="Save to Wishlist" title="" href=""
+                                                class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i
+                                                    class="fa fa-heart"></i></a> <a class="btn btn-light btn-round"
+                                                data-abc="true"
+                                                onclick="document.getElementById('<%= product.name %>').submit();"> Remove </a>
+                                        </td>
+                                    </form>
+                                </tr>
+
+                                <% }) %>
+                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </aside>
+
+
+            <!-- TOTAL -->
+            <aside class="col-lg-3">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group"> <label>Have coupon?</label>
+                                <div class="input-group"> <input type="text" class="form-control coupon" name=""
+                                        placeholder="Coupon code"> <span class="input-group-append"> <button
+                                            class="btn btn-dark btn-apply coupon">Apply</button> </span> </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+
+                        <dl class="dlist-align">
+                            <dt>Total Items:</dt>
+                            <dd class="text-right text-dark ml-3"> <%= totalProducts %> </dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Total Price:</dt>
+                            <!-- <dd class="text-right text-dark b ml-3"><strong>  totalPrice  </strong></dd> -->
+                            <dd class="text-right text-dark b ml-3"><strong> $<%= totalPrice %> </strong></dd>
+                        </dl>
+                        <hr>
+
+                            <% if(productList.length === 0) { %>
+                                <button class="btn btn-lg btn-dark btn-block" type="button" data-toggle="modal"
+                            data-dismiss="modal" data-target="#emptyCartModal">Make An Order</button>
+                            <% } else { %>
+                                <button class="btn btn-lg btn-dark btn-block" type="button" data-toggle="modal"
+                                data-dismiss="modal" data-target="#paymentModal">Make An Order</button>
+                            <% } %>
+                        <a href="/" class="btn btn-lg btn-primary btn-block" id="continue">Continue Shopping</a>
+                     
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+
+    <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Order</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/order" method="post" class="form-signin">
+                        <% if(userName === "") { %>
+                        <!-- <img class="mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+                        <!-- <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3> -->
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Full Name"
+                            required autofocus>
+                        <br>
+                        <label for="phone">Phone Number:</label>
+                        <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number"
+                            required autofocus>
+                        <br>
+                        <label for="email">Email Address:</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email Address"
+                            required autofocus>
+                            <br>
+                        <% } else {%>
+                            
+                            <div class="container">
+                                <h5>You will see your order details at your profile page. <br><br> Thank you for your order!</h5>
+                                <br>
+                            </div>
+                         
+                        <% } %>
+                        <button class="btn btn-lg btn-dark btn-block" type="submit">Order Now</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty Cart Modal -->
+    <div class="modal fade" id="emptyCartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Order</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h1>Your shopping cart is empty, please add some products.</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Section -->
+    <footer class="bg-light py-5">
+        <div class="container">
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-lg-12 text-center">
+                    <div class="mb-5 flex-center">
+                        <!-- Facebook -->
+                        <a class="fb-ic">
+                            <a href="https://www.facebook.com/" style="color:black"><i
+                                    class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i></a>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="tw-ic">
+                            <a href="https://www.twitter.com/" style="color:black">
+                                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> 
+                            </i>
+                        </a>
+                        <!--Linkedin -->
+                        <a class="li-ic">
+                            <a href="https://www.linkedin.com/" style="color:black">
+                                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> 
+                            </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="ins-ic">
+                            <a href="https://www.instagram.com/" style="color:black">
+                                <i class="fab fa-instagram fa-lg white-text fa-2x"> 
+                            </i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row-->
+
+            <div class="container">
+                <div class="small text-center text-muted">
+                    <p>Copyright © 2020 - Noam Kanonich</p>
+                </div>
+            </div>
+
+    </footer>
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/cart.js"></script>
+    <script src="public/js/cart.js"></script>
+    <script src="public/js/scripts.js"></script>
+
+
+</body>
+</html>

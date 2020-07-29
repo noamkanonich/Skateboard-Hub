@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Skateboard Hut</title>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="icon" href="images/skateboard-icon.ico" />
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+        rel="stylesheet" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="public/css/styles.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+
+        window.location.reload()
+
+    </script>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation Section -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Skateboard Hut</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#products">Store</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" onclick="document.getElementById('cart-form').submit();">
+                            <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+                            <span class="numberCircle" id="counter"> <%= totalProducts %> </span>
+                        </a>
+                    </li>
+
+                    <% if(profileName === "") {%>
+
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#loginModal">
+                            <i class="fa fa-user fa-lg" aria-hidden="true">
+
+                            </i>
+                        </a>
+                    </li>
+
+                    <% } else {%>
+
+                    <li class="nav-item">
+                        <a class="nav-link dropbtn js-scroll-trigger">
+                            <div class="dropdown">
+                                <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                                <div class="dropdown-content">
+                                    <a class="first" href="profile">My Profile</a>
+                                    <a class="second" href="signout">Sign Out</a>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Title Section -->
+    <header class="masthead" style="background-image: url(images/stakes.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="text-uppercase text-white font-weight-bold">Skateboarding is a way <br> to let your body
+                        <br>control the mind.</h1>
+
+                    <hr class="divider my-4" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 font-weight-light mb-5">Are you ready to ride? This is your time to shine!
+                        <br> Show them what you've got!</p>
+                    <a class="btn btn-light btn-xl js-scroll-trigger" href="#products">Our Products</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/login" method="GET" class="form-signin">
+                        <label for="inputName">Full Name:</label>
+                        <input type="text" name="username" id="inputName" class="form-control" placeholder="Full Name"
+                            required autofocus>
+                        <br>
+                        <label for="phoneInput">Phone Number:</label>
+                        <input type="text" name="phone" id="inputName" class="form-control" placeholder="Phone Number"
+                            maxlength="10" required autofocus>
+                        <br>
+                        <label for="inputEmail">Email Address:</label>
+                        <input type="email" name="email" id="inputEmail" class="form-control"
+                            placeholder="Email Address" required autofocus>
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+                        <br>
+                        <p>Don't have an account yet? No problem, create one!</p>
+                        <button class="btn btn-lg btn-primary btn-block" type="button" data-toggle="modal"
+                            data-dismiss="modal" data-target="#signupModal">Create Account</button>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/login" method="POST" class="form-signin" id="signup-form">
+                        <label for="inputName">Full Name:</label>
+                        <input type="text" name="name" id="inputName" class="form-control" placeholder="Full Name"
+                            required autofocus>
+                        <br>
+                        <label for="inputPhone">Phone Number:</label>
+                        <input type="text" name="phone" id="inputPhone" class="form-control" placeholder="Phone Number"
+                            required autofocus>
+                        <br>
+                        <label for="inputEmail">Email Address:</label>
+                        <input type="email" name="email" id="inputEmail" class="form-control"
+                            placeholder="Email Address" required autofocus>
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Congrats!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                   <h2>You created a new account.<br>Thank you!</h2>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div> -->
+
+
+    <!-- About Section -->
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white mt-0">We've got what you need!</h2>
+                    <hr class="divider light my-4" />
+                    <p class="text-white-50 mb-4">Skateboard Hut has everything you need to get your perfect skateboard
+                        in no time! Choose one of our amazing, cool and beautiful products, and start skating today!
+                        Let's roll!</p>
+                    <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="page-section" id="services">
+        <div class="container">
+            <h2 class="text-center mt-0">At Your Service</h2>
+            <hr class="divider my-4" />
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <i class="fas fa-4x fa-tools text-primary mb-4"></i>
+                        <h3 class="h4 mb-2">Sturdy Skates</h3>
+                        <p class="text-muted mb-0">Our skateboards are maintained regularly to keep them fresh and brand
+                            new!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <i class="fas fa-4x fa-tint text-primary mb-4"></i>
+                        <h3 class="h4 mb-2">Keep It Fresh</h3>
+                        <p class="text-muted mb-0">We are cleaning and shining our skateboards every day to keep things
+                            fresh!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <i class="fas fa-4x fa-thumbs-up text-primary mb-4"></i>
+                        <h3 class="h4 mb-2">Ready to Roll</h3>
+                        <p class="text-muted mb-0">You can use our skateborads as is, and you can return them after 14
+                            days if you don't want them!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <i class="fas fa-4x fa-heart text-primary mb-4"></i>
+                        <h3 class="h4 mb-2">Made with Love</h3>
+                        <p class="text-muted mb-0">Our products are made of true and big love!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section-->
+    <div id="gallery">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="images/skate4.jpg">
+                        <img class="img-fluid" src="images/skate4.jpg" alt="Skateboard" />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">It's</div>
+                            <div class="project-name">Sunday</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="images/skate5.jpg">
+                        <img class="img-fluid" src="images/skate5.jpg" alt="Skateboard" />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">It's</div>
+                            <div class="project-name">Monday</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="images/skate6.jpg">
+                        <img class="img-fluid" src="images/skate6.jpg" alt="Skateboard" />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">It's</div>
+                            <div class="project-name">Tuesday</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="images/skate10.jpg">
+                        <img class="img-fluid" src="images/skate10.jpg" alt="Skateboard" />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">It's</div>
+                            <div class="project-name">Wednesday</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="images/skate11.jpg">
+                        <img class="img-fluid" src="images/skate11.jpg" alt="Skateboard" />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">It's</div>
+                            <div class="project-name">Thursday</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="images/skate12.jpg" >
+                        <img class="img-fluid" src="images/skate12.jpg" alt="Skateboard"  />
+                        <div class="portfolio-box-caption p-3">
+                            <div class="project-category text-white-50">It's</div>
+                            <div class="project-name">Friday</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="page-section bg-primary text-white" id="products">
+        <div class="container text-center">
+            <h2 class="mb-4">Explore Our Products</h2>
+            <hr class="divider my-4" />
+        </div>
+
+        <form action="/cart" method="post" id="cart-form">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg 3 col-sm-6 col-sm-6 col-sm-6">
+                        <div class="card card-inverse card-primary text-center" id="product1">
+                            <img class="card-img-top" src="images/yamba.jpg" alt="Card image cap" height="240"
+                                id="productImage">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title" id="productName">Yamba 500
+                                            <p class="cat card-text text-left mt-1">CAT: 0001</p>
+                                        </h5>
+
+                                    </div>
+                                    <div class="col">
+                                        <p class="text-right price" id="productPrice">$139</p>
+                                    </div>
+                                </div>
+                                <p class="card-text text-left">Great, fun and stable cruiser to roll with where ever you want.</p>
+                                <!-- <a class="btn btn-dark mb-2 mt-2 rodupct-item add-to-cart" name="addProduct">Add To Cart</a>    -->
+
+                                <!-- <input class="checkhour" type="checkbox" value="Peace Wooden Skateboard 3" name="name" style="visibility: hidden">
+                                                    <input class="checkhour" type="checkbox" value="119.90" name="price" style="visibility: hidden">
+                                                    <input class="checkhour" type="checkbox"  value="images/stakes.jpg" name="image" style="visibility: hidden"> -->
+                                <input class="checkhour" type="checkbox" name="product" value="Yamba 500"
+                                    style="visibility: hidden" id="product1check">
+                                <input class="checkhour" type="checkbox" name="price" value="139.90"
+                                    style="visibility: hidden" id="product1check">
+                                <input class="checkhour" type="checkbox" name="image" value="images/yamba.jpg"
+                                    style="visibility: hidden" id="product1check">
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="checkall btn btn-dark add-to-cart text-center mb-2"
+                                                type="button" id="product1">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg 3 col-sm-6 col-sm-6 col-sm-6">
+                        <div class="card card-inverse card-primary text-center" id="product2">
+                            <img class="card-img-top" src="images/yamba2.jpg" alt="Card image cap" height="240">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-6 pr-1">
+                                        <h5 class="card-title " id="name">Yamba 500-2
+                                            <p class="cat card-text text-left  mt-1">CAT: 0002</p>
+                                        </h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="text-right price" id="price">$119</p>
+                                    </div>
+                                </div>
+                                <p class="card-text text-left">Much similar to Yamba 500, fun, stable and good for beginners!</p>
+                                <!-- <a class="btn btn-dark mb-2 mt-2 product-item add-to-cart" id="product2">Add To Cart</a> -->
+                                <input class="checkhour" type="checkbox" name="product" value="Yamba 500-2"
+                                    style="visibility: hidden">
+                                <input class="checkhour" type="checkbox" name="price" value="119"
+                                    style="visibility: hidden">
+                                <input class="checkhour" type="checkbox" name="image" value="images/yamba2.jpg"
+                                    style="visibility: hidden">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <!-- <input class="checkhour" type="checkbox" name="product" value="PRODUCT 2" style="visibility: hidden">
+                                                                    <input class="checkhour" type="checkbox" name="price" value="329.90" style="visibility: hidden">
+                                                                    <input class="checkhour" type="checkbox" name="image" value="images/stakes.jpg" style="visibility: hidden"> -->
+                                            <button class="checkall btn btn-dark add-to-cart text-center mb-2"
+                                                type="button" id="product2">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg 3 col-sm-6 col-sm-6 col-sm-6">
+                        <div class="card card-inverse card-primary text-center" id="product3">
+                            <img class="card-img-top" src="images/longboard-fish.jpg" alt="yamba board" height="240">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h5 class="card-title" id="name">Longboard Fish
+                                            <p class="cat card-text text-left mt-1">CAT: 0003</p>
+                                        </h5>
+                                    </div>
+                                    <div class="col-5 pr-2">
+                                        <p class="text-right price" id="price">$269</p>
+                                    </div>
+                                </div>
+                                <p class="card-text text-left">Very stable and comfortable, <br> Perfect for skating in
+                                    the city.</p>
+                                <input class="checkhour" type="checkbox" name="product" value="Longboard Fish"
+                                    style="visibility: hidden">
+                                <input class="checkhour" type="checkbox" name="price" value="269"
+                                    style="visibility: hidden">
+                                <input class="checkhour" type="checkbox" name="image" value="images/longboard-fish.jpg"
+                                    style="visibility: hidden">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="checkall btn btn-dark add-to-cart text-center mb-2"
+                                                type="button" id="product3">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg 3 col-sm-6 col-sm-6 col-sm-6">
+                        <div class="card card-inverse card-primary text-center" id="product4">
+                            <img class="card-img-top" src="images/carve540-bird-.jpg" alt="yamba board" height="240">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h5 class="card-title" id="name">Carve 5 400
+                                            <p class="cat card-text text-left mt-1">CAT: 0004</p>
+                                        </h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="text-right price" id="price">$299</p>
+                                    </div>
+                                </div>
+                                <!-- <p class="card-text text-left">Stiff board, gives a feeling of wave surfing.<br>Good for
+                                    professionals.</p> -->
+                                    <p class="card-text text-left">Stiff board, feels like wave surfing. Good for professionals.</p>
+                                <input class="checkhour" type="checkbox" name="product" value="Carve 5 400"
+                                    style="visibility: hidden">
+                                <input class="checkhour" type="checkbox" name="price" value="299"
+                                    style="visibility: hidden">
+                                <input class="checkhour" type="checkbox" name="image" value="images/carve540-bird-.jpg"
+                                    style="visibility: hidden">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="checkall btn btn-dark add-to-cart text-center mb-2"
+                                                type="button" id="product4">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="container" id="more">
+                        <div class="row">
+                            <div class="col-lg 3 col-sm-6 col-sm-6 col-sm-6">
+                                <div class="card card-inverse card-primary text-center" id="product5">
+                                    <img class="card-img-top" src="images/yamba-900-.jpg" alt="Card image cap"
+                                        height="240">
+                                    <div class="card-block">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h5 class="card-title" id="name">Yamba 900
+                                                    <p class="cat card-text text-left mt-1">CAT: 0005</p>
+                                                </h5>
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="text-right price" id="price">$199</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-text text-left">More advance Yamba board. suitable for professionals.</p>
+                                        <input class="checkhour" type="checkbox" name="product" value="Yamba 900"
+                                            style="visibility: hidden">
+                                        <input class="checkhour" type="checkbox" name="price" value="199"
+                                            style="visibility: hidden">
+                                        <input class="checkhour" type="checkbox" name="image"
+                                            value="images/yamba-900-.jpg" style="visibility: hidden">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button class="checkall btn btn-dark add-to-cart text-center mb-2"
+                                                        type="button" id="product5">Add To Cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg 3 col-sm-6 col-sm-6 col-sm-6">
+                                <div class="card card-inverse card-primary text-center" id="product6">
+                                    <img class="card-img-top" src="images/yamba3.jpg" alt="Card image cap" height="240">
+                                    <div class="card-block">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h5 class="card-title" id="name">Yamba Cruiser
+                                                    <p class="cat card-text text-left mt-1">CAT: 0006</p>
+                                                </h5>
+                                            </div>
+                                            <div class="col-5 pr-2">
+                                                <p class="text-right price" id="price">$169</p>
+
+                                            </div>
+                                        </div>
+                                        <p class="card-text text-left">Very fun and smooth skateboard. Nice board to start with.</p>
+                                        <input class="checkhour" type="checkbox" name="product" value="Yamba Cruiser"
+                                            style="visibility: hidden">
+                                        <input class="checkhour" type="checkbox" name="price" value="169"
+                                            style="visibility: hidden">
+                                        <input class="checkhour" type="checkbox" name="image" value="images/yamba3.jpg"
+                                            style="visibility: hidden">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button class="checkall btn btn-dark add-to-cart text-center mb-2"
+                                                        type="button" id="product6">Add To Cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg 3 col-sm-6 col-sm-6 col-sm-6">
+                                <div class="card card-inverse card-primary text-center" id="product7">
+                                    <img class="card-img-top" src="images/mid500.jpg" alt="Card image cap" height="240">
+                                    <div class="card-block">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <h5 class="card-title" id="name">MID500 - Monkey
+                                                    <p class="cat card-text text-left mt-1">CAT: 0007</p>
+                                                </h5>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-right price" id="price">$119</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-text text-left">Perfet for beginners, especially suitable for kids and teens.</p>
+                                        <input class="checkhour" type="checkbox" name="product" value="MID500 - Monkey"
+                                            style="visibility: hidden">
+                                        <input class="checkhour" type="checkbox" name="price" value="119"
+                                            style="visibility: hidden">
+                                        <input class="checkhour" type="checkbox" name="image" value="images/mid500.jpg"
+                                            style="visibility: hidden">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button class="checkall btn btn-dark add-to-cart text-center mb-2"
+                                                        type="button" id="product7">Add To Cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg 3 col-sm-6 col-sm-6 col-sm-6">
+                                <div class="card card-inverse card-primary text-center" id="product8">
+                                    <a href="images/mid-5-2.jpg">
+                                        <img class="card-img-top" src="images/mid-5-2.jpg" alt="Card image cap"
+                                            height="240">
+                                    </a>
+                                    <div class="card-block">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h5 class="card-title" id="name">MID500 - Wolf
+                                                    <p class="cat card-text text-left mt-1">CAT: 0008</p>
+                                                </h5>
+                                            </div>
+                                            <div class="col-5">
+                                                <p class="text-right price" id="price">$119</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-text text-left">Perfet for beginners, especially suitable for kids and teens.</p>
+                                        <input class="checkhour" type="checkbox" name="product" value="MID500 - Wolf"
+                                            style="visibility: hidden">
+                                        <input class="checkhour" type="checkbox" name="price" value="119"
+                                            style="visibility: hidden">
+                                        <input class="checkhour" type="checkbox" name="image" value="images/mid-5-2.jpg"
+                                            style="visibility: hidden">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button class="checkall btn btn-dark add-to-cart text-center mb-2"
+                                                        type="button" id="product8">Add To Cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+
+
+        <div class="container text-center">
+            <button class="btn btn-dark mt-5 load-more checkout cart-list" type="button" id="showmore" name="load-more"
+                onclick="toggleProducts()">Show More</button>
+        </div>
+
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mt-0">Let's Get In Touch!</h2>
+                    <hr class="divider my-4" />
+                    <p class="text-muted mb-5">Have a question? Need any help? Give us a call or send us an email and we
+                        will get back to you as soon as possible!</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                    <div>+1 (555) 123-4567</div>
+                </div>
+                <div class="col-lg-4 mr-auto text-center">
+                    <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                    <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
+                    <a class="d-block" href="mailto:contact@skateboardhub.com">contact@skateboardhub.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Footer Section -->
+    <footer class="bg-light py-5">
+        <div class="container">
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-lg-12 text-center">
+                    <div class="mb-5 flex-center">
+                        <!-- Facebook -->
+                        <a class="fb-ic">
+                            <a href="https://www.facebook.com/" style="color:black">
+                                <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                            </a>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="tw-ic">
+                            <a href="https://www.twitter.com/" style="color:black">
+                                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x">
+                                </i>
+                            </a>
+                            <!--Linkedin -->
+                            <a class="li-ic">
+                                <a href="https://www.linkedin.com/" style="color:black">
+                                    <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x">
+                                    </i>
+                                </a>
+                                <!--Instagram-->
+                                <a class="ins-ic">
+                                    <a href="https://www.instagram.com/" style="color:black">
+                                        <i class="fab fa-instagram fa-lg white-text fa-2x">
+                                        </i>
+                                    </a>
+                    </div>
+                </div>
+
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row-->
+
+            <div class="container">
+                <div class="small text-center text-muted">
+                    <p>Copyright © 2020 - Noam Kanonich</p>
+                </div>
+            </div>
+
+    </footer>
+
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script src="public/js/scripts.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="public/js/cart.js"></script>
+
+</body>
+
+</html>

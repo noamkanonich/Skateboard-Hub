@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="icon" href="images/skateboard-icon.ico" />
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+        rel="stylesheet" />
+
+    <!-- CSS -->
+    <link href="css/order.css" rel="stylesheet" />
+    <link href="public/css/order.css" rel="stylesheet" />
+    <link href="css/cart.css" rel="stylesheet" />
+    <link href="public/css/cart.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class=" container-fluid my-5 ">
+        <h1 class="text-uppercase text-white font-weight-bold text-center mb-3"> Profile</h1>
+
+        <div class="row justify-content-center ">
+            <div class="col-xl-10">
+                <div class="card shadow-lg ">
+                    <div class="row p-2 mt-3 justify-content-between mx-sm-2">
+                        <div class="col">
+                            <p class="text-muted space mb-0 shop"> Shop No.78618K</p>
+                            <p class="text-muted space mb-0 shop">Store Locator</p>
+                        </div>
+                        <div class="col-auto"> <img class="irc_mi img-fluid bell" src="https://i.imgur.com/uSHMClk.jpg"
+                                width="30" height="30"> </div>
+                    </div>
+                    <!-- <div class="row mx-auto justify-content-center text-center">
+                                <div class="col-12 mt-3 ">
+                                    <nav aria-label="breadcrumb" class="second ">
+                                        <ol class="breadcrumb indigo lighten-6 first ">
+                                            <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " href="#"><span class="mr-md-3 mr-1">BACK TO SHOP</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                                            <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span class="mr-md-3 mr-1">SHOPPING BAG</span></a><i class="fa fa-angle-double-right text-uppercase " aria-hidden="true"></i></li>
+                                            <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase active-2" href="#"><span class="mr-md-3 mr-1">CHECKOUT</span></a></li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div> -->
+                    <% if ( orderFound.length === undefined) { %>
+                    <div class="row justify-content-around">
+                        <div class="col-md-5 mb-4 mr-2 ml-2">
+                            <div class="mb-4">
+                                <h1 class="text-uppercase font-weight-bold text-center mb-3">Hello,
+                                    <%= orderFound.name %></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-md-5 mb-4 mr-2 ml-2">
+                            <div class="card border-1">
+                                <div class="card-header">
+                                    <p class="card-text text-muted mt-4 mb-2 space">PERSONAL INFO</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-between">
+                                        <div class="col-auto mt-0">
+                                            <p><b>Full Name:</b></p>
+                                            <p> <%= orderFound.name %> </p>
+                                        </div>
+                                        <div class="col-auto mt-0">
+                                            <p><b>Phone Number:</b></p>
+                                            <p> <%= orderFound.phone %> </p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p><b>Email Address:</b></p>
+                                            <p> <%= orderFound.email %> </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-5 mr-2 ml-2">
+                            <div class="card border-1">
+                                <div class="card-header">
+                                    <p class="card-text text-muted mt-md-4 mb-2 space">YOUR ORDER
+                                        <!-- <span class=" small text-muted ml-2 cursor-pointer">EDIT SHOPPING BAG</span>  -->
+                                    </p>
+                                </div>
+
+                                <div class="card-body pt-2">
+                                    <h1 class="mb-4">There is no past orders! </h1>
+                                    <a href="/" class="btn btn-lg btn-primary btn-block mt-2 mb-1">Continue Shopping</a>
+                                </div>
+
+                                <% } else { %>
+
+                                <% orderFound.forEach(function(product){ %>
+
+                                <div class="row mx-auto justify-content-center text-center">
+                                    <div class="col-12 mt-3 mb-5">
+                                        <h1 class="text-uppercase font-weight-bold text-center mb-3">Hello,
+                                            <%= product.name %></h1>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-around">
+                                    <div class="col-md-5 mb-4 mr-2 ml-2">
+                                        <div class="card border-1">
+                                            <div class="card-header">
+                                                <p class="card-text text-muted mt-4 mb-2 space">PERSONAL INFO</p>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row justify-content-between">
+                                                    <div class="col-auto mt-0">
+                                                        <p><b>Full Name:</b></p>
+                                                        <p> <%= product.name %></p>
+                                                    </div>
+                                                    <div class="col-auto mt-0">
+                                                        <p><b>Phone Number:</b></p>
+                                                        <p> <%= product.phone %> </p>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <p><b>Email Address:</b></p>
+                                                        <p> <%= product.email %> </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="row mt-4">
+                                                <div class="col">
+                                                    <p class="text-muted mb-2">PAYMENT DETAILS</p>
+                                                    <hr class="mt-0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group"> <label for="NAME" class="small text-muted mb-1">NAME ON CARD</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="BBBootstrap Team"> </div>
+                                            <div class="form-group"> <label for="NAME" class="small text-muted mb-1">CARD NUMBER</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555"> </div>
+                                            <div class="row no-gutters">
+                                                <div class="col-sm-6 pr-sm-2">
+                                                    <div class="form-group"> <label for="NAME" class="small text-muted mb-1">VALID THROUGH</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="06/21"> </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group"> <label for="NAME" class="small text-muted mb-1">CVC CODE</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="183"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-md-5">
+                                                <div class="col"> <button type="button" name="" id="" class="btn btn-lg btn-block ">PURCHASE $37 SEK</button> </div>
+                                            </div> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 mb-4 mr-2 ml-2">
+                                        <div class="card border-1">
+                                            <div class="card-header">
+                                                <p class="card-text text-muted mt-md-4 mb-2 space">YOUR ORDER</p>
+                                            </div>
+
+                                            <div class="card-body pt-2">
+
+                                                <% for(i = 0; i < product.totalProducts ; i++) { %>
+
+                                                <hr class="my-2">
+                                                <div class="row justify-content-between">
+                                                    <div class="col-auto col-md-7">
+                                                        <div class="media flex-column flex-sm-row">
+                                                            <img class="img-fluid "
+                                                                src="<%= product.products[i].image %>" width="72"
+                                                                height="72">
+                                                            <div class="media-body my-auto">
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <p class="mb-0">
+                                                                            <b><%= product.products[i].name %> </b></p>
+                                                                        <p class="small text-muted"> Brand: Skateboard
+                                                                            Hub </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pl-0 flex-sm-col col-auto my-auto">
+                                                        <p class="boxed-1"> 1 </p>
+                                                    </div>
+                                                    <div class="pl-0 flex-sm-col col-auto my-auto">
+                                                        <p style="font-size:16px;"><b>$<%= product.products[i].price %>
+                                                            </b></p>
+                                                    </div>
+                                                </div>
+
+                                                <% } %>
+
+                                                <hr class="my-2 ">
+                                                <div class="row ">
+                                                    <div class="col mt-3">
+                                                        <div class="row justify-content-between">
+                                                            <div class="col-4">
+                                                                <p class="mb-1"><b>Order Date</b></p>
+                                                            </div>
+                                                            <div class="flex-sm-col col-auto">
+                                                                <p class="mb-1"><b> <%= product.date %> </b></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-between">
+                                                            <div class="col">
+                                                                <p class="mb-1"><b>Items</b></p>
+                                                            </div>
+                                                            <div class="flex-sm-col col-auto">
+                                                                <p class="mb-1"><b> <%= product.totalProducts %> </b>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-between">
+                                                            <div class="col-4">
+                                                                <p><b>Total Price</b></p>
+                                                            </div>
+                                                            <div class="flex-sm-col col-auto">
+                                                                <p class="mb-1"><b>$ <%= product.totalPrice %> </b></p>
+                                                            </div>
+                                                        </div>
+                                                        <hr class="my-0">
+                                                    </div>
+                                                </div>
+
+                                                <% }) %>
+
+                                                </b></p>
+                                                <!-- <a href="/" class="btn btn-lg btn-primary btn-block mt-2 mb-1">Continue Shopping</a> -->
+                                                <a href="/" class="btn btn-lg btn-primary btn-block  mt-2 mb-1"
+                                                    id="continue">Continue Shopping</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% } %>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="mb-5 flex-center">
+
+                        <a class="fb-ic">
+                            <a href="https://www.facebook.com/" style="color:black"><i
+                                    class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i></a>
+                        </a>
+
+                        <a class="tw-ic">
+                            <a href="https://www.twitter.com/" style="color:black">
+                                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x">
+                                </i>
+                            </a>
+
+                            <a class="li-ic">
+                                <a href="https://www.linkedin.com/" style="color:black">
+                                    <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x">
+                                    </i>
+                                </a>
+
+                                <a class="ins-ic">
+                                    <a href="https://www.instagram.com/" style="color:black">
+                                        <i class="fab fa-instagram fa-lg white-text fa-2x">
+                                        </i>
+                                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="small text-center text-muted">
+                    <p>Copyright © 2020 - Noam Kanonich</p>
+                </div>
+            </div>
+    </footer>
+
+</body>
+
+</html>

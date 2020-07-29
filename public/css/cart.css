@@ -1,0 +1,217 @@
+.cart-list {
+    margin-left: 10px; 
+}
+
+
+.list-group-item {
+    margin-top: -0.25rem !important;
+}
+
+.list-group{
+    margin: 0;
+    /* border: 0px; */
+    border-radius: 0;
+  }
+
+  .list-group-item{
+    margin: 0;
+    /* border: 0px; */
+    border-radius: 0;
+  }
+
+  li.borderless { 
+      border-right: 0 none; 
+      border-left: 0 none; 
+      border-top: 0 none;
+      border-bottom: 0 none;
+        
+    }
+
+li.title-borderless {
+    border-right: 0 none; 
+    border-left: 0 none; 
+    border-top: 0 none;
+}
+
+.price {
+    margin: auto;
+    font-size:30px;
+}
+
+.purchase {
+    padding: 210px;
+    font-size:100px;
+}
+
+/* ------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+body {
+    background: linear-gradient(110deg, #f4623a 60%, #343a40 60%);
+    font-family: 'Open Sans', serif;
+    font-size: 14px
+}
+
+.container-fluid {
+    margin-top: 70px
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.40rem
+}
+
+.img-sm {
+    width: 80px;
+    height: 80px
+}
+
+.itemside .info {
+    padding-left: 15px;
+    padding-right: 7px
+}
+
+.table-shopping-cart .price-wrap {
+    line-height: 1.2
+}
+
+.table-shopping-cart .price {
+    font-weight: bold;
+    margin-right: 5px;
+    display: block
+}
+
+.text-muted {
+    color: #969696 !important
+}
+
+a {
+    text-decoration: none !important
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0px
+}
+
+.itemside {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%
+}
+
+.dlist-align {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+[class*="dlist-"] {
+    margin-bottom: 5px
+}
+
+.coupon {
+    border-radius: 1px
+}
+
+.price {
+    font-weight: 600;
+    color: #212529
+}
+
+.btn.btn-out {
+    outline: 1px solid #fff;
+    outline-offset: -5px
+}
+
+.btn-main {
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 10px 19px;
+    cursor: pointer;
+    color: #fff;
+    width: 100%
+}
+
+.btn-light {
+    color: #ffffff;
+    background-color: #F44336;
+    border-color: #f8f9fa;
+    font-size: 12px
+}
+
+.btn-light:hover {
+    color: #ffffff;
+    background-color: #F44336;
+    border-color: #F44336
+}
+
+.btn-apply {
+    font-size: 11px
+}
+
+a.btn-primary  {
+    display:inline-block;
+    background-color: #f4623a;
+    padding: 0.4em 0.4em;
+    margin: 0 0.1em 0.1em 0;
+    border: 0.16em solid rgba(255, 255, 255, 0);
+    border-radius: 0.3em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 400;
+    color: #ffffff;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    text-align: center;
+    transition: all 0.2s;
+    font-size: 18px;
+}
+
+.btn-primary:hover {
+    border: 0.16em solid#f4623a;
+    /* padding: 10px 0.4em; */
+}
+
+
+/* .btn-primary:active:focus  {
+    background: pink;
+    border: 3px solid white;
+    border-color: orangered;
+    color:yellow;
+} */
+
+#continue {
+    color: white;
+}
+
+#continue:hover {
+    background-color: orangered;
+    border: 3px solid orangered;
+}
+
+a.btn-primary:focus  {
+    background-color: orangered;
+    border: 3px solid rgb(255, 136, 0);
+    border-color: rgb(255, 136, 0);
+}
+
+
+@media all and (max-width: 480px) {
+    a.continue-shopping {
+        display: block;
+        margin: 0.2em auto;
+    }
+}
