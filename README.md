@@ -3,7 +3,7 @@ Skateboard Hut is a full stack responsive online store, involving EJS, Java Scri
 User can log in or create an account, add products to the shopping cart, make an order and more.
 
 # How To Start
-1. Download this repository zip file.
+1. Download the repository zip file.
 2. Open the command line and go to the app's folder location.
 3. Type the following - "npm install" to install all dependencies that are require for using this web app.
 4. Type "node app.js" to start the server.
