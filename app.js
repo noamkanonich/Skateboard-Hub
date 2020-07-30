@@ -96,7 +96,7 @@ app.get("/login", function (req, res) {
     var loginName = req.query.username;
     var loginNumber = req.query.phone;
     var loginEmail = req.query.email;
-
+    
     User.findOne({ name: loginName, email: loginEmail }, function (
         err,
         foundUser
@@ -121,10 +121,7 @@ app.post("/login", function (req, res) {
         email: req.body.email,
     });
 
-    User.findOne({ name: newUser.name, email: newUser.email }, function (
-        err,
-        foundUser
-    ) {
+    User.findOne({ name: newUser.name, email: newUser.email }, function (err,foundUser) {
         if (foundUser === null) {
             userName = newUser.name;
             newUser.save();
@@ -323,6 +320,19 @@ app.post("/order", function (req, res) {
     var products = [];
     var newOrder;
 
+    // When user not logged in - check if there is alreay a user with the same name
+    User.find({name: name}, function(err, userFound){
+        if(userFound.length > 0){
+            userName = name;
+            Order.deleteMany({ name: name }, function (err, orderFound) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
+    })
+
+    // When user is logged in - delete his past order
     Order.deleteMany({ name: userName }, function (err, orderFound) {
         if (err) {
             console.log(err);
