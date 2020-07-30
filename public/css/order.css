@@ -1,40 +1,40 @@
 body {
-    background: linear-gradient(110deg, #f4623a 60%, #343a40 60%);
+  background: linear-gradient(110deg, #f4623a 60%, #343a40 60%);
 }
 
 .shop {
-    font-size: 10px
+  font-size: 10px;
 }
 
 .space {
-    letter-spacing: 0.8px !important
+  letter-spacing: 0.8px !important;
 }
 
 .second a:hover {
-    color: rgb(92, 92, 92)
+  color: rgb(92, 92, 92);
 }
 
 .active-2 {
-    color: rgb(92, 92, 92)
+  color: rgb(92, 92, 92);
 }
 
-.breadcrumb>li+li:before {
-    content: "" !important
+.breadcrumb > li + li:before {
+  content: "" !important;
 }
 
 .breadcrumb {
-    padding: 0px;
-    font-size: 10px;
-    color: #aaa !important
+  padding: 0px;
+  font-size: 10px;
+  color: #aaa !important;
 }
 
 .first {
-    background-color: white
+  background-color: white;
 }
 
 a {
-    text-decoration: none !important;
-    color: #aaa
+  text-decoration: none !important;
+  color: #aaa;
 }
 
 .btn-lg,
@@ -42,113 +42,117 @@ a {
 .form-control-sm:active,
 a:focus,
 a:active {
-    outline: none !important;
-    box-shadow: none !important
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .form-control-sm:focus {
-    border: 1.5px solid #4bb8a9
+  border: 1.5px solid #4bb8a9;
 }
 
-.btn-group-lg>.btn,
+.btn-group-lg > .btn,
 .btn-lg {
-    padding: .5rem 0.1rem;
-    font-size: 1rem;
-    border-radius: 0;
-    color: white !important;
-    background-color: #4bb8a9;
-    height: 2.8rem !important;
-    border-radius: 0.2rem !important
+  padding: 0.5rem 0.1rem;
+  font-size: 1rem;
+  border-radius: 0;
+  color: white !important;
+  background-color: #4bb8a9;
+  height: 2.8rem !important;
+  border-radius: 0.2rem !important;
 }
 
-.btn-group-lg>.btn:hover,
+.btn-group-lg > .btn:hover,
 .btn-lg:hover {
-    background-color: #26A69A
+  background-color: #26a69a;
 }
 
 .btn-outline-primary {
-    background-color:orangered !important;
-    color: white !important;
-    border-radius: 0.2rem !important;
-    border: 1px solid orangered
+  background-color: orangered !important;
+  color: white !important;
+  border-radius: 0.2rem !important;
+  border: 1px solid orangered;
 }
 
 .btn-outline-primary:hover {
-    background-color: #4bb8a9 !important;
-    color: #fff !important;
-    border: 1px solid #4bb8a9
+  background-color: #4bb8a9 !important;
+  color: #fff !important;
+  border: 1px solid #4bb8a9;
 }
 
 .card-2 {
-    margin-top: 40px !important
+  margin-top: 40px !important;
 }
 
 .card-header {
-    background-color: #fff;
-    border-bottom: 0px solid #aaaa !important
+  background-color: #fff;
+  border-bottom: 0px solid #aaaa !important;
 }
 
 p {
-    font-size: 13px
+  font-size: 13px;
 }
 
 .small {
-    font-size: 9px !important
+  font-size: 9px !important;
 }
 
 .form-control-sm {
-    height: calc(2.2em + .5rem + 2px);
-    font-size: .875rem;
-    line-height: 1.5;
-    border-radius: 0
+  height: calc(2.2em + 0.5rem + 2px);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0;
 }
 
 .cursor-pointer {
-    cursor: pointer
+  cursor: pointer;
 }
 
 .boxed {
-    padding: 0px 8px 0 8px;
-    background-color: #4bb8a9;
-    color: white
+  padding: 0px 8px 0 8px;
+  background-color: #4bb8a9;
+  color: white;
 }
 
 .boxed-1 {
-    padding: 0px 8px 0 8px;
-    color: black !important;
-    border: 1px solid #aaaa
+  padding: 0px 8px 0 8px;
+  color: black !important;
+  border: 1px solid #aaaa;
 }
 
 .bell {
-    opacity: 0.5;
-    cursor: pointer
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 @media (max-width: 767px) {
-    .breadcrumb-item+.breadcrumb-item {
-        padding-left: 0
-    }
+  .breadcrumb-item + .breadcrumb-item {
+    padding-left: 0;
+  }
 }
 
 .card {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .btn {
-    font-family: 'Merriweather Sans';
+  font-family: "Merriweather Sans";
 }
 
 #continue {
-    color: white;
+  color: white;
 }
 
 #continue:hover {
-    background-color: orangered;
-    border: 3px solid orangered;
+  background-color: orangered;
+  border: 3px solid orangered;
 }
 
-a.btn-primary:focus  {
-    background-color: orangered;
-    border: 3px solid rgb(255, 136, 0);
-    border-color: rgb(255, 136, 0);
+a.btn-primary:focus {
+  background-color: orangered;
+  border: 3px solid rgb(255, 136, 0);
+  border-color: rgb(255, 136, 0);
+}
+
+#order-details p {
+  font-size:14px;
 }
