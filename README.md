@@ -10,6 +10,9 @@ User can log in or create an account, add products to the shopping cart, make an
 5. Open your internet browser and enter the following link - "http://localhost:3000/.
 6. Enjoy Skateboard Hut!
 
+# Live Example
+https://skateboard-hut.herokuapp.com/
+
 # Screenshots
 ![screenshot1](https://user-images.githubusercontent.com/55742997/88775406-567f5200-d18d-11ea-9ec5-27baa47dd607.jpg)
 #
