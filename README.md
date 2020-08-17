@@ -1,5 +1,5 @@
 # Skateboard-Hut
-Skateboard Hut is a full stack responsive online store, involving EJS, Java Script, jQuery, Node.js, express, MongoDB and Mongoose.<br />
+Skateboard Hut is a full stack responsive online store, involving EJS, Java Script, jQuery, Node.js, Express, MongoDB and Mongoose.<br />
 User can log in or create an account, add products to the shopping cart, make an order, view his most recent order and more.
 
 # How To Start
