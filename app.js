@@ -5,10 +5,12 @@ const { response } = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/storeDB", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+// mongoose.connect("mongodb+srv://admin-noam:Noam1992@cluster0.pztzo.mongodb.net/storeDB", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// });
+
+mongoose.connect("mongodb://localhost:27017/storeDB", { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.set("view engine", "ejs");
 
@@ -48,6 +50,7 @@ var totalProducts = 0;
 var userName = "";
 
 app.get("/", function (req, res) {
+    // Check if there are products which added to cart
     Product.find({}, function (err, foundProducts) {
         if (foundProducts.length === 0) {
             totalProducts = 0;
@@ -74,33 +77,13 @@ app.get("/", function (req, res) {
     });
 });
 
-app.post("/", function (req, res) {
-    Product.find({}, function (err, foundProducts) {
-        if (foundProducts.length === 0) {
-            totalProducts = 0;
-            res.render("index", {
-                totalProducts: totalProducts,
-                profileName: userName,
-            });
-        } else {
-            totalProducts = foundProducts.length;
-            res.render("index", {
-                totalProducts: totalProducts,
-                profileName: userName,
-            });
-        }
-    });
-});
 
 app.get("/login", function (req, res) {
     var loginName = req.query.username;
     var loginNumber = req.query.phone;
     var loginEmail = req.query.email;
     
-    User.findOne({ name: loginName, email: loginEmail }, function (
-        err,
-        foundUser
-    ) {
+    User.findOne({ name: loginName, email: loginEmail }, function (err,foundUser) {
         if (foundUser === null) {
             console.log("There is no such account!");
             res.redirect("/");
@@ -170,7 +153,9 @@ app.post("/cart", function (req, res) {
     Product.find({}, function (err, foundProducts) {
         if (foundProducts.length === 0 && req.body.product === undefined) {
             res.redirect("cart");
-        } else if ((foundProducts.length !== 0) & (req.body.product === undefined)) {
+        } 
+        // If user pressed on "Continue Shopping" and did not add more products
+        else if ((foundProducts.length !== 0) && (req.body.product === undefined)) {
             totalPrice = 0;
             foundProducts.forEach(function (product) {
                 totalPrice = totalPrice + product.price;
@@ -194,6 +179,7 @@ app.post("/cart", function (req, res) {
                     image: images,
                 });
 
+                // Check for repetitions inside the shopping cart 
                 if (foundProducts.length > 0) {
                     var diff = true;
                     for (i = 0; i < foundProducts.length; i++) {
@@ -201,6 +187,7 @@ app.post("/cart", function (req, res) {
                             diff = false;
                         }
                     }
+                    // If product does not exists, add it to the database
                     if (diff === true) {
                         newProduct.save();
                         totalPrice = totalPrice + newProduct.price;
@@ -212,7 +199,10 @@ app.post("/cart", function (req, res) {
                     totalProducts++;
                 }
                 res.redirect("cart");
-            } else {
+            } 
+
+            // If there are more than one product inside the shopping cart
+            else {
                 prices.forEach(function (price) {
                     totalPrice = totalPrice + parseInt(price);
                     totalProducts++;
@@ -238,13 +228,7 @@ app.post("/cart", function (req, res) {
                     }
                 }
 
-                Product.find({}, function (err, foundProducts) {
-                    if (foundProducts.length === 0) {
-                        res.redirect("cart");
-                    } else {
-                        res.redirect("cart");
-                    }
-                });
+                res.redirect("cart");
             }
         }
     });
@@ -289,11 +273,6 @@ app.get("/profile", function (req, res) {
     });
 });
 
-app.post("/profile", function (req, res) {
-    Order.find({ name: req.body.name }, function (err, orderFound) {
-        res.render("order", { orderFound: orderFound });
-    });
-});
 
 app.get("/order", function (req, res) {
     Order.find({ name: userName }, function (err, orderFound) {
@@ -393,7 +372,12 @@ app.post("/order", function (req, res) {
     });
 });
 
-app.listen(3000, function () {
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+app.listen(port, function () {
     Product.deleteMany({}, function (err) {
         if (err) {
             console.log(err);
